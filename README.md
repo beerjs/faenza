@@ -2,6 +2,8 @@
 
 ## BeerJS: Faenza, Italy :beer:
 
+[beerjs/faenza](https://beerjs.github.io/faenza/)
+
 BeerJS Faenza is for devs to get together, throw a few back, and learn collectively about JavaScript. We value good beer and good code and encourage the sharing of both.
 
 Topics so far have been around JavaScript, but in reality the scope is pretty open. We start the meetup by just hanging out and chatting then we will get into presentations. Anyone can present for any amount of time.
