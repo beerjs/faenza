@@ -1,5 +1,12 @@
+require('../scss/drunkboy.scss');
+
+var moment = require('moment');
+
 (function() {
   
+  // The event data url
+  var eventUrl = 'https://cdn.rawgit.com/beerjs/faenza/a57c04c6/beerjs.json';
+
   // Bubbles taken from BeerJS Santiago
   var canvas = document.getElementById('bubbling');
   var ctx = canvas.getContext('2d');
@@ -42,11 +49,11 @@
   loopBubbles();
   
   // Load the event json
-  function loadJSON(callback) {   
+  function loadJSON(url, callback) {   
     
     var xobj = new XMLHttpRequest();
     xobj.overrideMimeType("application/json");
-    xobj.open('GET', 'beerjs.json', true);
+    xobj.open('GET', url, true);
     xobj.onreadystatechange = function () {
       if (xobj.readyState == 4 && xobj.status == "200") {
         callback(xobj.responseText);
@@ -56,8 +63,10 @@
     
   }  
   
-  loadJSON(function(response) {
+  // Get the event data to populate page
+  loadJSON(eventUrl, function(response) {
     
+    // Get json event data
     var eventData = JSON.parse(response);
     
     // Get elements
@@ -66,11 +75,24 @@
     var eventPlace = document.getElementById('eventPlace');
     var eventTheme = document.getElementById('eventTheme');
     
+    // Get dates
+    var today = moment();
+    var eventDate = moment(eventData.date, 'DD/MM/YYYY');
+
     // Set event data on page    
     eventTitle.innerHTML = eventData.event;
-    eventTime.innerHTML = [eventData.date, '-', eventData.time].join(' ');
     eventPlace.innerHTML = eventData.place;
     eventTheme.innerHTML = eventData.theme;
+    
+    // If event is not yet occurred
+    if( today.diff(eventDate) < 0 ) {
+      eventTime.innerHTML = [eventDate.fromNow(), '-', eventData.time].join(' ');      
+    }
+      
+    // If event already happen
+    if( today.diff(eventDate) > 0 ) {
+      eventTime.innerHTML = eventDate.fromNow();
+    }
     
   });
   

@@ -1,4 +1,5 @@
-html, body {
+body,
+html {
   height: 100%;
   width: 100%;
   padding: 0;
@@ -21,11 +22,12 @@ html, body {
   margin: 0;
   color: #444;
   font-family: 'Pacifico', cursive;
+  white-space: nowrap;
 }
 
 .event-time {
   font-size: 1.4em;
-  margin: -15px 0 0 0;
+  margin: -15px 0 0;
   color: #444;
   font-weight: bold;
   text-align: center;
@@ -62,9 +64,9 @@ html, body {
 #subscribe {
   display: inline-block;
   border: 2px solid #544700;
-  padding: .4em 1em;
+  padding: 0.4em 1em;
   font-size: 1.3em;
-  transition: .3s;
+  transition: 0.3s;
   text-transform: uppercase;
   background-color: transparent;
   color: #544700;
@@ -84,4 +86,13 @@ html, body {
 
 .text-center {
   text-align: center;
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    .event-title {
+      font-size: 2.4em;
+    }
+    .event-time {
+        font-size: 1.2em;
+    }
 }
