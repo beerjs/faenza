@@ -1,0 +1,37 @@
+{
+  "name": "faenza",
+  "version": "1.0.0",
+  "description": "BeerJS Faenza website.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beerjs/faenza.git"
+  },
+  "keywords": [
+    "beerjs",
+    "faenza"
+  ],
+  "author": "b4dnewz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/beerjs/faenza/issues"
+  },
+  "homepage": "https://github.com/beerjs/faenza#readme",
+  "devDependencies": {
+    "browser-sync-webpack-plugin": "^1.2.0",
+    "css-loader": "^0.28.4",
+    "node-sass": "^4.5.3",
+    "postcss-loader": "^2.0.6",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
+    "uglifyjs-webpack-plugin": "^0.4.6",
+    "webpack": "^3.5.1",
+    "webpack-dev-server": "^2.7.1"
+  },
+  "dependencies": {
+    "moment": "^2.18.1"
+  }
+}
