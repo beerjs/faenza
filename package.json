@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/beerjs/faenza#readme",
   "devDependencies": {
+    "browser-sync": "^2.18.13",
     "browser-sync-webpack-plugin": "^1.2.0",
     "css-loader": "^0.28.4",
     "node-sass": "^4.5.3",
