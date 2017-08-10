@@ -88,11 +88,12 @@ html {
   text-align: center;
 }
 
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-    .event-title {
-      font-size: 2.4em;
-    }
-    .event-time {
-        font-size: 1.2em;
-    }
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .event-title {
+    font-size: 2.4em;
+  }
+
+  .event-time {
+    font-size: 1.2em;
+  }
 }
