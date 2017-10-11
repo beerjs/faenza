@@ -3,9 +3,9 @@ require('../scss/drunkboy.scss');
 var moment = require('moment');
 
 (function() {
-  
+
   // The event data url
-  var eventUrl = 'https://cdn.rawgit.com/beerjs/faenza/a57c04c6/beerjs.json';
+  var eventUrl = 'https://rawgit.com/beerjs/faenza/master/beerjs.json';
 
   // Bubbles taken from BeerJS Santiago
   var canvas = document.getElementById('bubbling');
