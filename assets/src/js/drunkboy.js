@@ -1,8 +1,13 @@
+'use strict';
+
+// Require main style
 require('../scss/drunkboy.scss');
 
+// Require moment library
 var moment = require('moment');
 
-(function() {
+// Wait for page to be fully loaded
+document.addEventListener("DOMContentLoaded",function(){
 
   // The event data url
   var eventUrl = 'https://rawgit.com/beerjs/faenza/master/beerjs.json';
@@ -12,11 +17,11 @@ var moment = require('moment');
   var ctx = canvas.getContext('2d');
   var particles = [];
   var particleCount = 280;
-  
+
   for (var i = 0; i < particleCount; i++) {
     particles.push(new particle());
   }
-  
+
   function particle() {
     this.x = Math.random() * canvas.width;
     this.y = canvas.height + Math.random() * 300;
@@ -24,12 +29,12 @@ var moment = require('moment');
     this.radius = Math.random() * 3;
     this.opacity = (Math.random() * 300) / 1000;
   }
-  
+
   function loopBubbles() {
     requestAnimationFrame(loopBubbles);
     draw();
   }
-  
+
   function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.globalCompositeOperation = 'lighter';
@@ -44,13 +49,13 @@ var moment = require('moment');
       particles[i] = new particle();
     }
   }
-  
+
   // start bubbles
   loopBubbles();
-  
+
   // Load the event json
-  function loadJSON(url, callback) {   
-    
+  function loadJSON(url, callback) {
+
     var xobj = new XMLHttpRequest();
     xobj.overrideMimeType("application/json");
     xobj.open('GET', url, true);
@@ -59,41 +64,41 @@ var moment = require('moment');
         callback(xobj.responseText);
       }
     };
-    xobj.send(null);  
-    
-  }  
-  
+    xobj.send(null);
+
+  }
+
   // Get the event data to populate page
   loadJSON(eventUrl, function(response) {
-    
+
     // Get json event data
     var eventData = JSON.parse(response);
-    
+
     // Get elements
     var eventTitle = document.getElementById('eventTitle');
     var eventTime = document.getElementById('eventTime');
     var eventPlace = document.getElementById('eventPlace');
     var eventTheme = document.getElementById('eventTheme');
-    
+
     // Get dates
     var today = moment();
     var eventDate = moment(eventData.date, 'DD/MM/YYYY');
 
-    // Set event data on page    
+    // Set event data on page
     eventTitle.innerHTML = eventData.event;
     eventPlace.innerHTML = eventData.place;
     eventTheme.innerHTML = eventData.theme;
-    
+
     // If event is not yet occurred
     if( today.diff(eventDate) < 0 ) {
-      eventTime.innerHTML = [eventDate.fromNow(), '-', eventData.time].join(' ');      
+      eventTime.innerHTML = [eventDate.fromNow(), '-', eventData.time].join(' ');
     }
-      
+
     // If event already happen
     if( today.diff(eventDate) > 0 ) {
       eventTime.innerHTML = eventDate.fromNow();
     }
-    
+
   });
-  
-})();
+
+});
